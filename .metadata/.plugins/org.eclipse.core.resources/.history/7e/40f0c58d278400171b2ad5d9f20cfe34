@@ -1,0 +1,21 @@
+package com.maxtrain;
+
+public class JavaTypes {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String name = "Java";
+		//Number types
+		int anInteger = 0;
+		long aVeryBigInteger = 0;
+		short aSmallerInteger = 0;
+		//Number types with decimals
+		float aFloat = 0;
+		double aDouble = 0.0;
+		//Boolean type
+		Boolean aBoolean = true;
+		//Character
+		char c = 'A';
+		
+	}
+}

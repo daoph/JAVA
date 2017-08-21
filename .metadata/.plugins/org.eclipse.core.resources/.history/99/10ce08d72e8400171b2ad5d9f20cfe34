@@ -1,0 +1,13 @@
+package com.maxtrain;
+
+public class Mainline {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Account checking = new Account("100","My First Checking");
+		double newBalance checking.deposit(100.00);
+		newBalance = checking.deposit(75.00);
+		double anotherBalance = checking.withdraw(25.00);
+	}
+
+}

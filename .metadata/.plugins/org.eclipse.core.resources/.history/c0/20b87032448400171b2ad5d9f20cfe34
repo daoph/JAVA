@@ -1,0 +1,37 @@
+package com.maxtrain;
+
+public class Mainline {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Account checking = new Account("My First Checking");
+
+		
+		
+		System.out.println("Number is " + checking.getNbr());
+		
+		
+		checking.setDesc("Greg's Checking");
+		System.out.println("Checking desc is " + checking.getDesc() + "balnce is" + checking.getBalance());
+		
+		
+		
+		
+		double newBalance = checking.deposit(100.00);
+		System.out.println("Deposit $100.00: Balance is " + newBalance);
+		
+		newBalance = checking.deposit(75.00);
+		System.out.println("Deposit $175.00: Balance is " + newBalance);
+		
+		newBalance = checking.withdraw(25.00);
+		System.out.println("Withdraw $25.00: Balance is " + newBalance);
+		
+		newBalance = checking.deposit(-100.00);
+		System.out.println("Deposit $-100.00: Balance is " + newBalance);
+		
+		newBalance = checking.withdraw(-25.00);
+		System.out.println("Withdraw $-25.00: Balance is " + newBalance);
+		
+	}
+
+}
