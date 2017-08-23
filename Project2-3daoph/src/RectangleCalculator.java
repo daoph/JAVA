@@ -26,10 +26,10 @@ public class RectangleCalculator {
 		    
 		   int area = length * width;
 		   
-		   int perimiter = 2 * width + 2 * length;
+		   int perimeter = 2 * width + 2 * length;
 		   
 		   System.out.println("Area: " + area);
-		   System.out.println("Width: " + width);
+		   System.out.println("Perimeter: " + perimeter);
 		   
 		    
 		   System.out.print("Continue? y or n ?: ");
