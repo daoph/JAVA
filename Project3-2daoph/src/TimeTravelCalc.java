@@ -40,6 +40,7 @@ public class TimeTravelCalc {
 			System.out.print("Continue? (y/n): ");
 			choice = sc.next();
 			System.out.println();
+			sc.close();
 		}
 
 	}

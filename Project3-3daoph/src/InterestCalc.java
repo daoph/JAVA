@@ -38,6 +38,7 @@ public class InterestCalc {
 			System.out.print("Continue? (y/n): ");
 			choice = sc.next();
 			System.out.println();
+			sc.close();
 
 		}
 	}

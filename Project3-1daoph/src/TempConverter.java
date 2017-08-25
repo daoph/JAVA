@@ -1,7 +1,6 @@
 import java.math.RoundingMode;
 import java.util.Scanner;
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 
 public class TempConverter {
 
@@ -51,6 +50,7 @@ public class TempConverter {
 			System.out.print("Continue? (y/n): ");
 			choice = sc.next();
 			System.out.println();
+			sc.close();
 		}
 	}
 }
