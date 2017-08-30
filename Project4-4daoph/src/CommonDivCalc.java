@@ -15,33 +15,61 @@ public class CommonDivCalc {
 
 		while (choice.equalsIgnoreCase("y")) {
 			System.out.println();
-			System.out.print("Enter first number: ");
-			secondNbrY = sc.nextInt();
-			System.out.print("Enter second number: ");
-			firstNbrX = sc.nextInt();
 
-			// logic
+			// ask for input with validation
+			boolean isValid = false;
+			while (!isValid) {
+				System.out.print("Enter first number: ");
 
-			while (secondNbrY != firstNbrX) {
-
-				int newY = yMinusX(secondNbrY, firstNbrX);
-				secondNbrY = firstNbrX;
-				firstNbrX = newY;
+				if (sc.hasNextInt()) {
+					secondNbrY = sc.nextInt();
+					isValid = true;
+				} else {
+					System.out.println("---Invalid Enter a valid first number!---");
+				}
+				sc.nextLine();
 			}
 
-			//display results
+			isValid = false;
+			while (!isValid) {
+				System.out.print("Enter second number: ");
+
+				if (sc.hasNextInt()) {
+					firstNbrX = sc.nextInt();
+					isValid = true;
+				} else {
+					System.out.println("---Invalid! Enter a valid second number!---");
+				}
+				sc.nextLine();
+			}
+
+			// logic
+			int counter = 0;
+			while (secondNbrY != firstNbrX) {
+
+				int newY = yMinusX(secondNbrY, firstNbrX); // method
+				secondNbrY = firstNbrX; // swap X
+				firstNbrX = newY; // and y values to check while statement.
+				counter += 1;
+				System.out.println("loop " + counter);
+			}
+
+			// display results
 			System.out.println("Greatest common divisor: " + firstNbrX);
 			System.out.println();
 			System.out.print("Continue? (y/n): ");
 			choice = sc.next();
 		}
 	}
+
 	private static int yMinusX(int y, int x) {
 
 		while (y > x) {
 			y = y - x;
 			System.out.println("Y=" + y + " X=" + x);
+
 		}
 		return y;
 	}
+
 }
