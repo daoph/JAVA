@@ -64,12 +64,12 @@ public class GuessingGame {
 		}
 
 	}
-
+//method validates Integer and within range.
 	public static int getIntWithinRange(Scanner sc, String prompt, int min, int max) {
 		int i = 0;
 		boolean isValid = false;
 		while (!isValid) {
-			i = getInt(sc, prompt);
+			i = getInt(sc, prompt);//uses getInt method
 			if (i <= min) {
 				System.out.println("Error! Number must be greater than " + min + ".");
 			} else if (i >= max) {
