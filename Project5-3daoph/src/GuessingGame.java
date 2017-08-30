@@ -44,17 +44,19 @@ public class GuessingGame {
 					isValid = false;
 				} else {
 					System.out.println("Yay! You got it in " + guessCounter + " tries!");
+					if (guessCounter < 3) {
+						System.out.println("Great work! You are a mathematical wizard!");
+					} else if (guessCounter > 3 && guessCounter < 7) {
+						System.out.println("Not too bad! You've got some potential!");
+					} else {
+						System.out.println("You have some work to do...");
+					}
+
 				}
 
 			}
 
-			if (guessCounter < 3) {
-				System.out.println("Great work! You are a mathematical wizard!");
-			} else if (guessCounter > 3 && guessCounter < 7) {
-				System.out.println("Not too bad! You've got some potential!");
-			} else {
-				System.out.println("You have some work to do...");
-			}
+			System.out.println(guessCounter);
 
 			System.out.print("Continue? y/n: ");
 			choice = sc.next();
