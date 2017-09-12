@@ -1,3 +1,4 @@
+package business;
 
 public class Store extends Facility {
 	
@@ -6,37 +7,21 @@ public class Store extends Facility {
 	String division = Division.divisionNumber;
 	
 	
-	public Store() {
-		super();
-	storeNumber = null;
-	division = "";
-	sales = 0;
+	public Store(int i, String string, String string2, double d, String string3, String string4, String string5,
+			String string6, String string7) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public double getSales() {
 		return sales;
 	}
-
-	public void setSales(double sales) {
-		this.sales = sales;
-	}
-
+	
 	public String getStoreNumber() {
 		return storeNumber;
 	}
 
-
-	public void setStoreNumber(String storeNumber) {
-		this.storeNumber = storeNumber;
-	}
-	
 	
 	public void storeString() {};
-	
-	
-	
 
-
-	
 	
 }

@@ -26,7 +26,16 @@ public class RotateLeft {
 			int gameArray[] = new int[arrayChoice];
 
 			for (int i = 0; i < gameArray.length; i++) {
-				gameArray[i] += rndmElement();
+				
+				//user input numbers
+				System.out.print("Type array number " + (i+1) + ": ");
+				int numbR = sc.nextInt();
+				gameArray[i] += numbR;
+				sc.nextLine();
+				
+//				//random generated
+//				gameArray[i] += rndmElement();	
+				
 			}
 			// print array
 			for (int i = 0; i < gameArray.length; i++)
