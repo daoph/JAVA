@@ -3,30 +3,54 @@ import java.util.Scanner;
 
 public class Console {
 
-	Scanner sc;
-	
-	public Console() {
-		sc = new Scanner(System.in);
-	}
-	
-	public int getInt(String prompt) {
-		int i = 0;
-        boolean isValid = false;
-        while (!isValid) {
+    private static Scanner sc = new Scanner(System.in);
+    
+    public static void displayLine() {
+        System.out.println();
+    }
+
+    public static void displayLine(String s) {
+        System.out.println(s);
+    }
+
+    public static String getString(String prompt) {
+        System.out.print(prompt);
+        String s = sc.nextLine();
+        return s;
+    }
+
+    public static String getStringNbr(String prompt) {
+        int i = 0;
+        String str = "";
+        while (true) {
             System.out.print(prompt);
-            if (sc.hasNextInt()) {
-                i = sc.nextInt();
-                isValid = true;
-            } else {
-                System.out.println("Error! Invalid integer value. Try again.");
+            str = sc.nextLine();
+            try {
+                i = Integer.parseInt(str);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Error! Invalid numeric string. Try again.");
             }
-            sc.nextLine();  // discard any other data entered on the line
+        }
+        return str;
+    }
+
+    public static int getInt(String prompt) {
+        int i = 0;
+        while (true) {
+            System.out.print(prompt);
+            try {
+                i = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Error! Invalid integer. Try again.");
+            }
         }
         return i;
-	}
+    }
 
-	public int getInt(String prompt, int min, int max) {
-		int i = 0;
+    public static int getInt(String prompt, int min, int max) {
+        int i = 0;
         boolean isValid = false;
         while (!isValid) {
             i = getInt(prompt);
@@ -39,26 +63,23 @@ public class Console {
             }
         }
         return i;
-	}
-
-	public double getDouble(String prompt) {
-		double d = 0;
-        boolean isValid = false;
-        while (!isValid) {
+    }
+    public static double getDouble(String prompt) {
+        double d = 0;
+        while (true) {
             System.out.print(prompt);
-            if (sc.hasNextDouble()) {
-                d = sc.nextInt();
-                isValid = true;
-            } else {
-                System.out.println("Error! Invalid double value. Try again.");
+            try {
+                d = Double.parseDouble(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Error! Invalid decimal. Try again.");
             }
-            sc.nextLine();  // discard any other data entered on the line
         }
         return d;
-	}
+    }
 
-	public double getDouble(String prompt, double min, double max) {
-		double d = 0;
+    public static double getDouble(String prompt, double min, double max) {
+        double d = 0;
         boolean isValid = false;
         while (!isValid) {
             d = getDouble(prompt);
@@ -71,53 +92,6 @@ public class Console {
             }
         }
         return d;
-	}
-
-	public String getString(String prompt) {
-		String s = "";
-        boolean isValid = false;
-        while (!isValid) {
-            System.out.print(prompt);
-            s = sc.nextLine();
-            if (s.equals("")) {
-                System.out.println("Error! This entry is required. Try again.");
-            } else {
-                isValid = true;
-            }
-        }
-        return s;
-	}
-
-	public String getString(String prompt, String s1, String s2) {
-		String s = "";
-        boolean isValid = false;
-        while (!isValid) {
-            s = getString(prompt);
-            if (!s.equalsIgnoreCase(s1) && !s.equalsIgnoreCase(s2)) {
-                System.out.println("Error! Entry must be '" + s1 + "' or '" +
-                        s2 + "'. Try again.");
-            } else {
-                isValid = true;
-            }
-        }
-        return s;
-	}
-
-	public void print(String s) {
-		System.out.print(s);
-
-	}
-
-	public void println() {
-		System.out.println();
-
-	}
-
-	public void println(String s) {
-		System.out.println(s
-				
-				);
-
-	}
+    }
 
 }
