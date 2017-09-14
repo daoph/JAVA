@@ -1,4 +1,4 @@
-package utility;
+package Utility;
 import java.util.Scanner;
 
 public class Console {

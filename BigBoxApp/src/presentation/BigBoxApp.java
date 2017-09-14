@@ -16,44 +16,44 @@ public class BigBoxApp {
 	private final static int NAME_LENGTH = 20;
 
 	public static void main(String[] args) {
-		Console.displayLine("Welcome to the BigBoxApp! - Array DAO Version");
+		Console.displayString("Welcome to the BigBoxApp! - Array DAO Version");
 		dao = BBFactory.getBBDAO();
 		String command = "";
 		while (!command.equalsIgnoreCase("exit")) {
-			Console.displayLine();
-			Console.displayLine("Command Menu");
-			Console.displayLine("list      - List All Stores");
-			Console.displayLine("array     - Array of stores");
-			Console.displayLine("div       - List All Stores for a Division");
-			Console.displayLine("sales     - Sales Summary All Stores");
-			Console.displayLine("divsales  - Sales Summary for a Division");
-			Console.displayLine("exit      - Exit the Application");
-			Console.displayLine();
+			Console.displayString();
+			Console.displayString("Command Menu");
+			Console.displayString("list      - List All Stores");
+			Console.displayString("array     - Array of stores");
+			Console.displayString("div       - List All Stores for a Division");
+			Console.displayString("sales     - Sales Summary All Stores");
+			Console.displayString("divsales  - Sales Summary for a Division");
+			Console.displayString("exit      - Exit the Application");
+			Console.displayString();
 			String displayString = "";
 			command = Console.getString("Enter command:  ");
 		
 			if (command!=null) {
 				if (command.equalsIgnoreCase("list")) {
 					displayString = listAllStores();
-					Console.displayLine(displayString);
+					Console.displayString(displayString);
 
 				} else if (command.equalsIgnoreCase("div")) {
 					String divNbr = Console.getStringNbr("Enter division #:  ");
 					displayString = listAllStores(divNbr);
-					Console.displayLine(displayString);
+					Console.displayString(displayString);
 				} else if (command.equalsIgnoreCase("add")) {
-					Console.displayLine("Not yet implemented");
+					Console.displayString("Not yet implemented");
 				} else if (command.equalsIgnoreCase("sales")) {
 						String formattedSales = Formatter.getFormattedDouble(dao.getSalesSummary());
-						Console.displayLine("Sales summary:  "+formattedSales);
+						Console.displayString("Sales summary:  "+formattedSales);
 				} else if (command.equalsIgnoreCase("divsales")) {
 					String divNbr = Console.getStringNbr("Div #:  ");
 					String formattedSales = Formatter.getFormattedDouble(dao.getSalesSummary(divNbr));
-					Console.displayLine("Sales summary for Division "+divNbr+":  "+formattedSales);
+					Console.displayString("Sales summary for Division "+divNbr+":  "+formattedSales);
 				} else if (command.equalsIgnoreCase("exit")) {
-					Console.displayLine("Bye");
+					Console.displayString("Bye");
 				} else {
-					Console.displayLine("Invalid command.  Please try again");
+					Console.displayString("Invalid command.  Please try again");
 				}
 			}
 		}		
