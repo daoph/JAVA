@@ -1,7 +1,5 @@
 package presentation;
-
 import java.util.ArrayList;
-
 import business.Store;
 import db.BBFactory;
 import utility.Console;
@@ -16,7 +14,7 @@ public class BigBoxApp {
 	private final static int NAME_LENGTH = 20;
 
 	public static void main(String[] args) {
-		Console.displayString("Welcome to the BigBoxApp! - Array DAO Version");
+		Console.displayString("Welcome to the BigBoxApp!");
 		dao = BBFactory.getBBDAO();
 		String command = "";
 		while (!command.equalsIgnoreCase("exit")) {

@@ -1,25 +1,32 @@
 import java.util.Scanner;
 
 public class MyConsole extends Console {
+	public MyConsole() {
+		super();
+	}
+   
 	
-	@SuppressWarnings("resource")
-	Scanner sc = new Scanner(System.in);
-   
-	public MyConsole() {super();}
-   
    @Override
 	public String getString(String prompt) {
-		
-		 System.out.print(prompt);
-		 String s = sc.next(); 
-		 sc.nextLine(); 
-		if(s == null) {System.out.println("There is no value!");
-		}	
-	else {return super.getString(prompt);}
-		return s;
-	}
+	   String s = "";
+       boolean isValid = false;
+       while (isValid == false) {
+           s = super.getString(prompt);
+           if (s.equals("")) {
+               System.out.println("Error! This entry is required. Try again.");
+           } else {
+               isValid = true;
+           }
+       }
+       return s;
+   }
+   
+   public void calculate(String string) {
+	   
+   }
+   
 
 	
 	
-	
 }
+

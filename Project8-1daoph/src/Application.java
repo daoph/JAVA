@@ -18,6 +18,8 @@ public class Application {
 		mc.getString("Enter an integer: ");
 		
 		
+		
+		
 		//check data
 
 		

@@ -1,11 +1,11 @@
 package db;
 
-import db.BigBoxDBArray;
+import db.BigBoxDB;
 import db.BBDAO;
 
 public class BBFactory {
 	public static BBDAO getBBDAO() {
-		BBDAO dao = new BigBoxDBArray();
+		BBDAO dao = new BigBoxDB();
 		return dao;
 	}
 }

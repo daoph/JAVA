@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import utility.Formatter;
 
+@SuppressWarnings("serial")
 public class Store extends Facility implements Serializable {
 	private Division division;
 	private String storeNumber;

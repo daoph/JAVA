@@ -1,0 +1,40 @@
+DROP TABLE IF EXISTS Stores;
+DROP TABLE IF EXISTS Divisions;
+
+CREATE TABLE Divisions (
+ID     			INTEGER     PRIMARY KEY    AUTOINCREMENT,
+DivisionNumber TEXT                       NOT NULL,
+Name			TEXT					   NOT NULL,
+Address			TEXT					   NOT NULL,
+City			TEXT					   NOT NULL,
+State			TEXT					   NOT NULL,
+ZipCode		TEXT					   NOT NULL
+);
+
+CREATE TABLE Stores (
+ID     			INTEGER     PRIMARY KEY    AUTOINCREMENT,
+DivisionID 		INTEGER                    NOT NULL,
+StoreNumber		TEXT					   NOT NULL,
+Sales			REAL					   NOT NULL,
+Name			TEXT					   NOT NULL,
+Address			TEXT					   NOT NULL,
+City			TEXT					   NOT NULL,
+State			TEXT					   NOT NULL,
+ZipCode		TEXT					   NOT NULL,
+FOREIGN KEY(DivisionID) REFERENCES Divisions(ID),
+Unique(DivisionID,StoreNumber)
+);
+
+INSERT INTO Divisions VALUES
+(1, '001', 'Cincinnati Division', '1111 Division St.', 'Cincinnati', 'OH', '45555'),
+(2, '111', 'Louisville Division', '1222 Washtington St.', 'Louisville', 'KY', '40205');
+
+
+INSERT INTO Stores (DivisionID, StoreNumber, Sales, Name, Address, City, State, ZipCode)
+VALUES 
+(1,'00011', 25000, 'Mason BigBox', '5711 Fields Ertel Rd.', 'Mason','OH', '45249'),
+(1,'00255', 27500, 'Downtown BigBox', '9330 Main St.', 'Cincinnati','OH', '45202'),
+(1,'00172', 32555.55, 'Goshen BigBox', '6777 Goshen Rd.', 'Goshen','OH', '45122'),
+(1,'00075', 21425.37, 'Bridgetown BigBox', '3888 Race Rd.','Cincinnati', 'OH', '45211'),
+(2,'00001', 14432.77, 'Louisville BigBox', '1111 Washington St.','Louisville', 'KY', '40206'),
+(2,'00044', 17555.11, 'Lawrenceburg BigBox', '8000 Liberty St.','Louisville', 'KY', '40204')
