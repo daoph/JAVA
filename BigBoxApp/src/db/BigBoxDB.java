@@ -17,8 +17,11 @@ public class BigBoxDB implements BBDAO {
 	private HashMap <Integer, Division> divisionIdMap = new HashMap<>();
 
 	private Connection getConnection() throws SQLException {
-		String dbUrl = "jdbc:sqlite:C://repos//JAVA//DB//SQLite//big_box.sqlite";
-		Connection connection = DriverManager.getConnection(dbUrl);
+		String dbUrl = "jdbc:mysql://PhucMi.local:3306/big_box";
+		String username = "windows-10.shared";
+		String password = "sesame";
+		
+		Connection connection = DriverManager.getConnection(dbUrl, username, password);
 		return connection;
 	}
 

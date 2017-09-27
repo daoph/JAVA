@@ -1,3 +1,11 @@
+
+/***********************************************************
+* Create the database named BigBox SQLite
+************************************************************/
+
+
+
+
 DROP TABLE IF EXISTS Stores;
 DROP TABLE IF EXISTS Divisions;
 
@@ -21,6 +29,63 @@ Address			TEXT					   NOT NULL,
 City			TEXT					   NOT NULL,
 State			TEXT					   NOT NULL,
 ZipCode		TEXT					   NOT NULL,
+FOREIGN KEY(DivisionID) REFERENCES Divisions(ID),
+Unique(DivisionID,StoreNumber)
+);
+
+INSERT INTO Divisions VALUES
+(1, '001', 'Cincinnati Division', '1111 Division St.', 'Cincinnati', 'OH', '45555'),
+(2, '111', 'Louisville Division', '1222 Washtington St.', 'Louisville', 'KY', '40205');
+
+
+INSERT INTO Stores (DivisionID, StoreNumber, Sales, Name, Address, City, State, ZipCode)
+VALUES 
+(1,'00011', 25000, 'Mason BigBox', '5711 Fields Ertel Rd.', 'Mason','OH', '45249'),
+(1,'00255', 27500, 'Downtown BigBox', '9330 Main St.', 'Cincinnati','OH', '45202'),
+(1,'00172', 32555.55, 'Goshen BigBox', '6777 Goshen Rd.', 'Goshen','OH', '45122'),
+(1,'00075', 21425.37, 'Bridgetown BigBox', '3888 Race Rd.','Cincinnati', 'OH', '45211'),
+(2,'00001', 14432.77, 'Louisville BigBox', '1111 Washington St.','Louisville', 'KY', '40206'),
+(2,'00044', 17555.11, 'Lawrenceburg BigBox', '8000 Liberty St.','Louisville', 'KY', '40204')
+
+
+
+
+
+
+
+
+
+/***********************************************************
+* Create the database named BigBox MySQL Version
+************************************************************/
+
+DROP DATABASE IF EXISTS big_box;
+CREATE DATABASE big_box;
+USE big_box;
+
+DROP TABLE IF EXISTS Stores;
+DROP TABLE IF EXISTS Divisions;
+
+CREATE TABLE Divisions (
+ID     			INT     PRIMARY KEY    AUTO_INCREMENT,
+DivisionNumber varchar(3)	                       NOT NULL,
+Name			varchar(255)					   NOT NULL,
+Address			varchar(255)					   NOT NULL,
+City			varchar(255)					   NOT NULL,
+State			varchar(2)					   NOT NULL,
+ZipCode		varchar(5)					   NOT NULL
+);
+
+CREATE TABLE Stores (
+ID     			INT     PRIMARY KEY    AUTO_INCREMENT,
+DivisionID 		INT                    NOT NULL,
+StoreNumber		varchar(5)					   NOT NULL,
+Sales			decimal(10,2)					   NOT NULL,
+Name			varchar(255)					   NOT NULL,
+Address			varchar(255)					   NOT NULL,
+City			varchar(255)					   NOT NULL,
+State			varchar(2)					   NOT NULL,
+ZipCode		varchar(5)						   NOT NULL,
 FOREIGN KEY(DivisionID) REFERENCES Divisions(ID),
 Unique(DivisionID,StoreNumber)
 );

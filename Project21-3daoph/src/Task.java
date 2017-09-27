@@ -27,6 +27,7 @@ public class Task {
 				Console.displayString(db.viewCompleted());
 				break;
 			case "complete":
+				Console.displayString("Completed");
 				db.completeTask();
 				break;
 			case "add":
@@ -35,11 +36,10 @@ public class Task {
 			case "delete":
 				db.deleteTask();
 				break;
-				
+
 			case "exit":
 				command = "exit";
 				break;
-
 			}
 		}
 
