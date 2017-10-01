@@ -1,0 +1,71 @@
+
+
+body {
+	font: normal normal normal 18pt/24pt Tahoma, Arial, sans-serif;
+	border: 0; margin: 0; padding: 0;
+}
+
+nav {
+	width: 100%;
+	background-color: #454545;
+	padding: 12px 0px;
+	margin: 0px 0px 20px 0px
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	display: inline;
+	text-align: center;
+}
+
+
+nav ul li a {	
+	color: white;
+	text-decoration: none;
+	padding: 10px;
+}
+
+a:hover {
+	background-color:#666666;
+}
+
+table tr td {padding: 10px;}
+
+#bioName {width: 50%; text-align: center}
+
+#aboutPic {float: left; margin: 0px 20px 10px 20px}
+
+#aboutDesc {margin: 10px 20px 0px 20px}
+
+#addUserText {text-align: center; font-size: 1.5em; font-weight: bold}
+
+#editDetailText {text-align: center; font-size: 1.5em; font-weight: bold}
+
+#userDetailText {text-align: center; font-size: 1.5em; font-weight: bold}
+
+#userTable {text-align: left; margin: 0px 100px; padding: 0px 25%;}
+
+#userTable content td {padding: 5px;}
+
+#listTable tr th {padding: 0px 3px 0px 5px; text-align: left; 
+					font-size: .9em;  border-spacing: 0; border: 1px solid black;}
+
+#listTable tr td {padding: 0px 5px 5px 5px; text-align: left; 
+					border-spacing: 0; border: 1px solid black; }
+
+#editSubmit {width: 100%; text-align: center;}
+
+
+#editRow { text-align: center }
+
+#addRow { text-align: center }
+
+#editSubmitRow { text-align: center }
+
+a {text-decoration: none; font-weight: bold;}
+button a link {color: black}
+button a: visited {color: black}
