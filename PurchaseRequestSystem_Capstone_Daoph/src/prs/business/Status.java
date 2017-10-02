@@ -9,7 +9,7 @@ public class Status implements Serializable {
 	private int id;
 	private String description;
 
-	// constructors
+	// the constructors
 	public Status() {
 	}
 
@@ -18,7 +18,7 @@ public class Status implements Serializable {
 		this.description = description;
 	}
 
-	// set and get methods
+	// the set and get methods
 	public int getId() {
 		return id;
 	}

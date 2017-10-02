@@ -1,9 +1,12 @@
 package prs.business;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class PurchaseRequest {
+@SuppressWarnings("serial")
+public class PurchaseRequest implements Serializable {
 
+	// the instance variables
 	private int id;
 	private int userID;
 	private String description;
@@ -14,8 +17,7 @@ public class PurchaseRequest {
 	private double total;
 	private Date submittedDate;
 
-	
-	//constructors
+	// the constructors
 	public PurchaseRequest() {
 	}
 
@@ -32,6 +34,7 @@ public class PurchaseRequest {
 		this.submittedDate = submittedDate;
 	}
 
+	// the set and get methods
 	public int getId() {
 		return id;
 	}
@@ -103,5 +106,7 @@ public class PurchaseRequest {
 	public void setSubmittedDate(Date submittedDate) {
 		this.submittedDate = submittedDate;
 	}
+	
+	// custom methods
 
 }

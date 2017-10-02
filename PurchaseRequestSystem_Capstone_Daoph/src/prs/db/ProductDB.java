@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import prs.business.Product;
-import prs.utility.DBManager;
+import prs.utility.ConnectionManager;
 
 public class ProductDB implements ProductDAO{
 
@@ -19,7 +19,7 @@ public class ProductDB implements ProductDAO{
 		String sql = "SELECT * FROM prs.Product";
 		ArrayList<Product> products = new ArrayList<>();
 
-		try (Connection connection = DBManager.getConnection();
+		try (Connection connection = ConnectionManager.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery()) {
 			

@@ -1,6 +1,10 @@
 package prs.business;
 
-public class Product {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Product implements Serializable {
+
 	// instance variables
 	private int id;
 	private int vendorID;
@@ -10,14 +14,12 @@ public class Product {
 	private String unit;
 	private String photoPath;
 
-	// constructors
-
+	// the constructors
 	public Product() {
 	}
 
 	public Product(int id, int vendorID, String vendorPartNumber, String name, double price, String unit,
 			String photoPath) {
-		super();
 		this.id = id;
 		this.vendorID = vendorID;
 		this.vendorPartNumber = vendorPartNumber;
@@ -27,7 +29,7 @@ public class Product {
 		this.photoPath = photoPath;
 	}
 
-	// set get
+	// the set get methods
 	public int getId() {
 		return id;
 	}
@@ -83,10 +85,7 @@ public class Product {
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
 	}
-	
-	
-	//custom methods
-	
-	
+
+	// custom methods
 
 }

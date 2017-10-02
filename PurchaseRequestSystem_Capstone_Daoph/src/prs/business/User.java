@@ -19,7 +19,6 @@ public class User implements Serializable {
 	// the constructors
 
 	public User() {
-
 	}
 
 	public User(int id, String username, String password, String firstName, String lastName, String phone, String email,
@@ -108,6 +107,6 @@ public class User implements Serializable {
 		this.isAdmin = isAdmin;
 	}
 
-	// any custom methods
+	// custom methods
 
 }
