@@ -6,7 +6,7 @@
 
 
 <head>
-<title>Manager History</title>
+<title>Request Review</title>
 <link href="styles/main.css" type="text/css" rel="stylesheet"></link>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" type=text/javascript></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -31,7 +31,6 @@
 			</div>
 		</div>
 	</nav>
-	
 <div style = "align: center; margin: 10px 2%">
 
 <table class = "table">
@@ -45,11 +44,11 @@
 <th>Total</th>
 <th>SubmittedDate</th>
 <th>Status</th>
-<th>ReasonForRejection</th>
-
+<th>Review</th>
+<th></th>
 </tr>
 
-<c:forEach var = "r" items = "${requests}">
+<c:forEach var = "r" items = "${pending}">
 <tr>
 <td>${r.id}</td>
 <td>${r.userID}</td>
@@ -59,15 +58,65 @@
 <td>${r.dateNeeded}</td>
 <td>
 <fmt:setLocale value="en_US" /> 
-<fmt:formatNumber value="${r.total}" type="currency" />
-</td>
+<fmt:formatNumber value="${r.total}" type="currency" /></td>
 <td>${r.submittedDate}</td>
 <td>${r.status}</td>
-<td>${r.reasonForR}</td>
+<td>
+<form name="frm" action="submit" method="POST">
+<input type="hidden" name="action" value="submit">
+<input type="hidden" name="userid" value="${r.id}">
+<input type="hidden" name="status" value="submitted">
+<button class = "btn btn-success">Submit</button>
+</form>
+</td>
+<td>
+<form name="frm" action="submit" method="POST">
+<input type="hidden" name="action" value="cancel">
+<input type="hidden" name="userid" value="${r.id}">
+<button class = "btn btn-danger">Cancel</button>
+</form>
+</td>
 </tr>
 </c:forEach>
 
 </table>
+
+<table class = "table">
+<tr>
+<th>Line Item ID</th>
+<th>Vendor ID</th>
+<th>Part Number</th>
+<th>Product Name</th>
+<th>Quantity</th>
+<th>Price</th>
+<th>Total Price</th>
+
+
+</tr>
+
+<c:forEach var = "p" items = "${prli}">
+<tr>
+<td>${p.id}</td>
+<td>${p.product.vendorID}</td>
+<td>${p.product.vendorPartNumber}</td>
+<td>${p.product.name}</td>
+<td>${p.quantity}</td>
+<td>
+<fmt:setLocale value="en_US" /> 
+<fmt:formatNumber value="${p.product.price}" type="currency" /></td>
+<td>
+<fmt:setLocale value="en_US" /> 
+<fmt:formatNumber value="${p.quantity * p.product.price}" type="currency" />
+</td>
+<td>
+</td>
+</tr>
+</c:forEach>
+
+</table>
+
+
+
 </div>
 
 

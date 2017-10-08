@@ -18,7 +18,7 @@ public class PurchaseRequestDB implements PurchaseRequestDAO {
 
 	@Override
 	public ArrayList<PurchaseRequest> getPurchaseRequests() {
-		String sql = "SELECT * FROM prs.PurchaseRequest";
+		String sql = "SELECT * FROM prs.PurchaseRequest ORDER BY DateUpdated DESC;";
 		ArrayList<PurchaseRequest> pr = new ArrayList<>();
 
 		try (Connection connection = ConnectionManager.getConnection();
@@ -35,8 +35,9 @@ public class PurchaseRequestDB implements PurchaseRequestDAO {
 				String status = rs.getString("Status");
 				double total = rs.getDouble("Total");
 				Date submittedDate = rs.getDate("SubmittedDate");	
+				String r4R = rs.getString("ReasonForRejection");
 
-				PurchaseRequest p = new PurchaseRequest(id,userID, description,justification,dateNeeded,deliveryMode,status,total,submittedDate);
+				PurchaseRequest p = new PurchaseRequest(id,userID, description,justification,dateNeeded,deliveryMode,status,total,submittedDate,r4R);
 				pr.add(p);	
 			}
 			
@@ -46,6 +47,182 @@ public class PurchaseRequestDB implements PurchaseRequestDAO {
 			System.err.println(e);
 			return null;
 		}	
+	}
+	
+	
+	@Override
+	public ArrayList<PurchaseRequest> getPurchaseRequests(int i) {
+		
+		
+		String sql = "SELECT * FROM prs.PurchaseRequest WHERE UserID = "+i+" ORDER BY DateUpdated DESC";
+		ArrayList<PurchaseRequest> pr = new ArrayList<>();
+
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery()) {
+			
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				int userID= rs.getInt("UserID");
+				String description = rs.getString("Description");
+				String justification = rs.getString("Justification");
+				Date dateNeeded = rs.getDate("DateNeeded");
+				String deliveryMode = rs.getString("DeliveryMode");
+				String status = rs.getString("Status");
+				double total = rs.getDouble("Total");
+				Date submittedDate = rs.getDate("SubmittedDate");	
+				String r4R = rs.getString("ReasonForRejection");
+
+				PurchaseRequest p = new PurchaseRequest(id,userID, description,justification,dateNeeded,deliveryMode,status,total,submittedDate,r4R);
+				pr.add(p);	
+			}
+			
+			return pr;
+
+		} catch (SQLException e) {
+			System.err.println(e);
+			return null;
+		}
+	}
+	
+
+	
+
+
+
+
+	@Override
+	public ArrayList<PurchaseRequest> getPendingRequests() {
+		
+		String sql = "SELECT * FROM prs.PurchaseRequest WHERE Status = 'submitted' ORDER BY DateUpdated DESC;";
+		
+		
+		ArrayList<PurchaseRequest> pr = new ArrayList<>();
+
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery()) {
+			
+			while (rs.next()) {
+				
+				int id = rs.getInt("ID");
+				int userID= rs.getInt("UserID");
+				String description = rs.getString("Description");
+				String justification = rs.getString("Justification");
+				Date dateNeeded = rs.getDate("DateNeeded");
+				String deliveryMode = rs.getString("DeliveryMode");
+				String status = rs.getString("Status");
+				double total = rs.getDouble("Total");
+				Date submittedDate = rs.getDate("SubmittedDate");	
+				String r4R = rs.getString("ReasonForRejection");
+
+				PurchaseRequest p = new PurchaseRequest(id,userID, description,justification,dateNeeded,deliveryMode,status,total,submittedDate,r4R);
+				pr.add(p);	
+			}
+			
+			return pr;
+
+		} catch (SQLException e) {
+			System.err.println(e);
+			return null;
+		}	
+	}
+
+	@Override
+	public ArrayList<PurchaseRequest> getPendingRequests(String s) {
+		
+		String sql = "SELECT * FROM prs.PurchaseRequest WHERE ID = "+s+" ORDER BY DateUpdated DESC;";
+		
+		
+		ArrayList<PurchaseRequest> pr = new ArrayList<>();
+
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery()) {
+			
+			while (rs.next()) {
+				
+				int id = rs.getInt("ID");
+				int userID= rs.getInt("UserID");
+				String description = rs.getString("Description");
+				String justification = rs.getString("Justification");
+				Date dateNeeded = rs.getDate("DateNeeded");
+				String deliveryMode = rs.getString("DeliveryMode");
+				String status = rs.getString("Status");
+				double total = rs.getDouble("Total");
+				Date submittedDate = rs.getDate("SubmittedDate");	
+				String r4R = rs.getString("ReasonForRejection");
+
+				PurchaseRequest p = new PurchaseRequest(id,userID, description,justification,dateNeeded,deliveryMode,status,total,submittedDate,r4R);
+				pr.add(p);	
+			}
+			
+			return pr;
+
+		} catch (SQLException e) {
+			System.err.println(e);
+			return null;
+		}	
+	}
+	
+	@Override
+	public ArrayList<PurchaseRequest> getPendingRequests(int i) {
+		
+		String sql = "SELECT * FROM prs.PurchaseRequest WHERE UserID = "+i+" AND IsActive = 1 ORDER BY DateUpdated DESC;";
+		
+		
+		ArrayList<PurchaseRequest> pr = new ArrayList<>();
+
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery()) {
+			
+			while (rs.next()) {
+				
+				int id = rs.getInt("ID");
+				int userID= rs.getInt("UserID");
+				String description = rs.getString("Description");
+				String justification = rs.getString("Justification");
+				Date dateNeeded = rs.getDate("DateNeeded");
+				String deliveryMode = rs.getString("DeliveryMode");
+				String status = rs.getString("Status");
+				double total = rs.getDouble("Total");
+				Date submittedDate = rs.getDate("SubmittedDate");	
+				String r4R = rs.getString("ReasonForRejection");
+
+				PurchaseRequest p = new PurchaseRequest(id,userID, description,justification,dateNeeded,deliveryMode,status,total,submittedDate,r4R);
+				pr.add(p);	
+			}
+			
+			return pr;
+
+		} catch (SQLException e) {
+			System.err.println(e);
+			return null;
+		}	
+	}
+	
+	@Override
+	public void writePRToDatabase(String description, double total) {
+			
+		String sql = "UPDATE prs.PurchaseRequest "
+				+ "SET Total = "+ total +" "
+				+ "WHERE Description ='"+description+"'" ;
+		
+		System.out.println(sql);
+		
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);) {
+
+			ps.executeUpdate(sql);
+			System.out.println("Written to PRLI DB");
+		}
+
+		catch (SQLException e) {
+			System.err.println(e);
+
+		}		
+		
 	}
 
 	@Override
@@ -89,111 +266,14 @@ public class PurchaseRequestDB implements PurchaseRequestDAO {
 		}	
 		return generatedKeyInt;
 	}
-
-	@Override
-	public void writePRToDatabase(String description, double total) {
-			
-		String sql = "UPDATE prs.PurchaseRequest "
-				+ "SET Total = "+ total +" "
-				+ "WHERE Description ='"+description+"'" ;
-		
-		System.out.println(sql);
-		
-		try (Connection connection = ConnectionManager.getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql);) {
-
-			ps.executeUpdate(sql);
-			System.out.println("Written to PRLI DB");
-		}
-
-		catch (SQLException e) {
-			System.err.println(e);
-
-		}		
-		
-	}
-
-
-
-	@Override
-	public ArrayList<PurchaseRequest> getPendingRequests() {
-		
-		String sql = "SELECT * FROM prs.PurchaseRequest WHERE Status = 'submitted' ORDER BY DateCreated ASC;";
-		
-		
-		ArrayList<PurchaseRequest> pr = new ArrayList<>();
-
-		try (Connection connection = ConnectionManager.getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery()) {
-			
-			while (rs.next()) {
-				
-				int id = rs.getInt("ID");
-				int userID= rs.getInt("UserID");
-				String description = rs.getString("Description");
-				String justification = rs.getString("Justification");
-				Date dateNeeded = rs.getDate("DateNeeded");
-				String deliveryMode = rs.getString("DeliveryMode");
-				String status = rs.getString("Status");
-				double total = rs.getDouble("Total");
-				Date submittedDate = rs.getDate("SubmittedDate");	
-				String r4R = rs.getString("ReasonForRejection");
-
-				PurchaseRequest p = new PurchaseRequest(id,userID, description,justification,dateNeeded,deliveryMode,status,total,submittedDate,r4R);
-				pr.add(p);	
-			}
-			
-			return pr;
-
-		} catch (SQLException e) {
-			System.err.println(e);
-			return null;
-		}	
-	}
-
-	@Override
-	public ArrayList<PurchaseRequest> getPendingRequests(String s) {
-		
-		String sql = "SELECT * FROM prs.PurchaseRequest WHERE ID = "+s+" ORDER BY DateCreated ASC;";
-		
-		
-		ArrayList<PurchaseRequest> pr = new ArrayList<>();
-
-		try (Connection connection = ConnectionManager.getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery()) {
-			
-			while (rs.next()) {
-				
-				int id = rs.getInt("ID");
-				int userID= rs.getInt("UserID");
-				String description = rs.getString("Description");
-				String justification = rs.getString("Justification");
-				Date dateNeeded = rs.getDate("DateNeeded");
-				String deliveryMode = rs.getString("DeliveryMode");
-				String status = rs.getString("Status");
-				double total = rs.getDouble("Total");
-				Date submittedDate = rs.getDate("SubmittedDate");	
-				String r4R = rs.getString("ReasonForRejection");
-
-				PurchaseRequest p = new PurchaseRequest(id,userID, description,justification,dateNeeded,deliveryMode,status,total,submittedDate,r4R);
-				pr.add(p);	
-			}
-			
-			return pr;
-
-		} catch (SQLException e) {
-			System.err.println(e);
-			return null;
-		}	
-	}
-
+	
+	
+	
 	@Override
 	public void writePRApproved(int generatedKey) {
 		
 		String sql = "UPDATE prs.PurchaseRequest "
-				+ "SET Status = 'APPROVED', IsActive = 0, ReasonForRejection = 'NA' "
+				+ "SET Status = 'APPROVED', IsActive = 0, ReasonForRejection = '$$$approved$$$' "
 				+ "WHERE ID = "+ generatedKey ;
 		
 		try (Connection connection = ConnectionManager.getConnection();
@@ -219,7 +299,7 @@ public class PurchaseRequestDB implements PurchaseRequestDAO {
 	public void writeManagerApproved(int id) {
 		
 		String sql = "UPDATE prs.PurchaseRequest "
-				+ "SET Status = 'APPROVED', IsActive = 0, ReasonForRejection = 'NA' "
+				+ "SET Status = 'APPROVED', IsActive = 0, ReasonForRejection = '$$$approved$$$' "
 				+ "WHERE ID = "+ id ;
 		
 		try (Connection connection = ConnectionManager.getConnection();
@@ -243,9 +323,7 @@ public class PurchaseRequestDB implements PurchaseRequestDAO {
 	@Override
 	public void writeManagerDenied(int id, String s) {
 		
-		String sql = "UPDATE prs.PurchaseRequest "
-				+ "SET Status = 'DENIED', IsActive = 0, ReasonForRejection = '"+s+"' "
-				+ "WHERE ID = "+ id ;
+		String sql = "UPDATE prs.PurchaseRequest SET Status = 'DENIED', IsActive = 0, ReasonForRejection = '"+s+"' WHERE ID = "+ id ;
 		
 		try (Connection connection = ConnectionManager.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);) {
@@ -258,10 +336,66 @@ public class PurchaseRequestDB implements PurchaseRequestDAO {
 			System.err.println(e);
 
 		}		
-
-		
-		
-		
-		
+	
 	}
+
+
+	@Override
+	public void userRemoveRequest(int i) {
+		
+	String sql = "UPDATE prs.PurchaseRequest SET Status = 'user-removed', IsActive = 0 WHERE ID = "+ i ;
+		
+	
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);) {
+
+			ps.executeUpdate(sql);
+			System.out.println(sql);
+		}
+
+		catch (SQLException e) {
+			System.err.println(e);
+
+		}	
+	}
+
+
+	@Override
+	public void userWriteSubmit(int i) {
+		
+		String sql = "UPDATE prs.PurchaseRequest SET Status = 'submitted', IsActive = 1 WHERE ID = "+ i ;	
+		
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);) {
+
+			ps.executeUpdate(sql);
+			System.out.println(sql);
+		}
+
+		catch (SQLException e) {
+			System.err.println(e);
+
+		}	
+	}
+
+
+	@Override
+	public void userWriteCancel(int i) {
+
+		String sql = "UPDATE prs.PurchaseRequest SET Status = 'user-canceled', IsActive = 0 WHERE ID = " + i;
+
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);) {
+			
+			ps.executeUpdate(sql);
+			System.out.println(sql);
+		}
+		catch (SQLException e) {
+			System.err.println(e);
+		}
+	}
+
+	
+
+
 }

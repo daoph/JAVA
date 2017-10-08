@@ -35,7 +35,7 @@ public class ManagerServlet extends HttpServlet {
 		ServletContext sc = getServletContext();
 		String action = request.getParameter("action");
 	
-		
+		//call DAOs
 		PurchaseRequestDAO prDAO = PRSFactory.getPurchaseRequestDAO();
 		PurchaseRequestLineItemsDAO prliDAO = PRSFactory.getPurchaseRequestLineItemsDAO();
 		
@@ -55,18 +55,18 @@ public class ManagerServlet extends HttpServlet {
 				
 			}else if (action.equals("review")) {	
 				
-				String orderID = request.getParameter("orderid");
+				String orderIDString = request.getParameter("orderid");
 				
-				System.out.println("Order ID #:" + orderID);
+				System.out.println("Order ID #:" + orderIDString);
 				//set url
 				url = "/manager-review.jsp";
 
 				
 				
 				//set to new PR object
-				ArrayList<PurchaseRequest> pendingR = prDAO.getPendingRequests(orderID);
+				ArrayList<PurchaseRequest> pendingR = prDAO.getPendingRequests(orderIDString);
 				//not as good. Trying to replace.
-				ArrayList<PurchaseRequestLineItem> prli = prliDAO.getPurchaseRequestLineItems(orderID);
+				ArrayList<PurchaseRequestLineItem> prli = prliDAO.getPurchaseRequestLineItems(orderIDString);
 				
 				
 				
@@ -80,10 +80,8 @@ public class ManagerServlet extends HttpServlet {
 					p.setProduct(pr);
 				}
 				
-				
-				
 				//set request
-				request.setAttribute("orderNumber", orderID);
+				request.setAttribute("orderNumber", orderIDString);
 				request.setAttribute("pending", pendingR);
 				request.setAttribute("prli", prli);	
 				
@@ -95,18 +93,16 @@ public class ManagerServlet extends HttpServlet {
 				
 				
 				
-				url = "/requests.jsp";
+				url = "/menu-requests.jsp";
 				prDAO.writeManagerApproved(id);
 				
 			}else if (action.equals("denied")) {	
-				
-				
+					
 				String idString = request.getParameter("userid");
 				int id = (int) Double.parseDouble(idString);
+				String s = request.getParameter("denialreason");
 				
-				String s = "";
-				
-				url = "/requests.jsp";
+				url = "/menu-requests.jsp";
 				prDAO.writeManagerDenied(id,s);
 				
 				

@@ -71,6 +71,7 @@
 <input type="hidden" name="action" value="denied">
 <input type="hidden" name="userid" value="${r.id}">
 <button class = "btn btn-danger">Deny</button>
+<input type="text" name="denialreason" value="Reason?">
 </form>
 </td>
 </tr>
@@ -81,6 +82,8 @@
 <table class = "table">
 <tr>
 <th>Line Item ID</th>
+<th>Vendor ID</th>
+<th>Part Number</th>
 <th>Product Name</th>
 <th>Quantity</th>
 <th>Price</th>
@@ -92,6 +95,8 @@
 <c:forEach var = "p" items = "${prli}">
 <tr>
 <td>${p.id}</td>
+<td>${p.product.vendorID}</td>
+<td>${p.product.vendorPartNumber}</td>
 <td>${p.product.name}</td>
 <td>${p.quantity}</td>
 <td>${p.product.price}</td>
@@ -103,14 +108,6 @@
 </c:forEach>
 
 </table>
-
-
-
-
-
-
-
-
 
 
 

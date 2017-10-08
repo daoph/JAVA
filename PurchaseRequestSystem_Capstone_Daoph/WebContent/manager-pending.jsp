@@ -44,7 +44,6 @@
 <th>Total</th>
 <th>SubmittedDate</th>
 <th>Status</th>
-<th>ReasonForRejection</th>
 <th>Review</th>
 
 </tr>
@@ -57,10 +56,11 @@
 <td>${r.justification}</td>
 <td>${r.deliveryMode}</td>
 <td>${r.dateNeeded}</td>
-<td>${r.total}</td>
+<td>
+<fmt:setLocale value="en_US" /> 
+<fmt:formatNumber value="${r.total}" type="currency" /></td>
 <td>${r.submittedDate}</td>
 <td>${r.status}</td>
-<td>${r.reasonForR}</td>
 <td>
 <form name="frm" action="manager" method="POST">
 <input type="hidden" name="action" value="review">

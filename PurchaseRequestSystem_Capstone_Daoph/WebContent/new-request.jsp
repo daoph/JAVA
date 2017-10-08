@@ -89,8 +89,10 @@
 
 						<td><a id='link' href="${product.photoPath}">${product.name}</a></td>
 
-						<td><fmt:setLocale value="en_US" /> <fmt:formatNumber
-								value="${product.price}" type="currency" /></td>
+						<td>
+						<fmt:setLocale value="en_US" /> 
+						<fmt:formatNumber value="${product.price}" type="currency" />
+						</td>
 						<td align="center"><input type="number"
 							name="quantity${loop.index}" min="0" max="20" value="0"></td>
 
@@ -104,7 +106,7 @@
 							<input type="hidden" name="productID${loop.index}"
 							value="${product.id}">
 							<input type="hidden" name="status"
-							value="submitted">
+							value="created">
 							</td>
 					</tr>
 				</c:forEach>

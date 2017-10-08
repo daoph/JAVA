@@ -13,4 +13,10 @@ public interface PurchaseRequestWriter {
 	void writeManagerApproved(int id);
 	
 	void writeManagerDenied(int id, String s);
+	
+	void userRemoveRequest(int i);
+	
+	void userWriteSubmit(int i);
+	
+	void userWriteCancel(int i);
 }

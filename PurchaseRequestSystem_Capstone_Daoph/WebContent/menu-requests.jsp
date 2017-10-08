@@ -38,11 +38,21 @@
 				</tr>
 				<tr>
 					<td align=center>
-					<button type="submit" class="btn btn-warning btn-block" style="font-size:16pt">View Pending Requests</button></td>
+					<form name="frm" action="users" method="POST">
+					<input type="hidden" name="action" value="viewpending">
+					<input type="hidden" name="userid" value="${user.id}">
+					<button class="btn btn-warning btn-block" style="font-size:16pt">View Pending Requests</button>
+					</form>
+					</td>
 				</tr>
 				<tr>
 					<td align=center>
-					<button type="submit" class="btn btn-default btn-block" style="font-size:16pt">Your Request History</button></td>
+					<form name="frm" action="users" method="POST">
+					<input type="hidden" name="action" value="viewhistory">
+					<input type="hidden" name="userid" value="${user.id}">
+					<button class="btn btn-default btn-block" style="font-size:16pt">Your Order History</button>
+					</form>
+					</td>
 				</tr>
 				<tr>
 				<td align=center>

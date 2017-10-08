@@ -8,7 +8,11 @@ public interface PurchaseRequestReader {
 
 	ArrayList<PurchaseRequest> getPurchaseRequests();
 	
+	ArrayList<PurchaseRequest> getPurchaseRequests(int i);
+	
 	ArrayList<PurchaseRequest> getPendingRequests();
 	
 	ArrayList<PurchaseRequest> getPendingRequests(String s);
+	
+	ArrayList<PurchaseRequest> getPendingRequests(int i);
 }
