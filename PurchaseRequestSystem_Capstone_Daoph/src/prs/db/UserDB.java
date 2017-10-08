@@ -13,11 +13,38 @@ public class UserDB implements UserDAO {
 
 	@Override
 	public ArrayList<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+
+		String sql = "SELECT * FROM prs.User";
+		ArrayList<User> user = new ArrayList<>();
+
+		try (Connection connection = ConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery()) {
+
+			while (rs.next()) {
+				int id = rs.getInt("ID");
+				String userName = rs.getString("UserName");
+				String password = rs.getString("Password");
+				String firstName = rs.getString("FirstName");
+				String lastName = rs.getString("LastName");
+				String phone = rs.getString("Phone");
+				String email = rs.getString("Email");
+				boolean isReviewer = rs.getBoolean("IsReviewer");
+				boolean isAdmin = rs.getBoolean("IsAdmin");
+
+				User s = new User(id, userName, password, firstName, lastName, phone, email, isReviewer, isAdmin);
+				user.add(s);
+			}
+			return user;
 		
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
+	
+	
 	@Override
 	public String loginValidator(String username, String password) {
 		String url = "";
@@ -32,11 +59,11 @@ public class UserDB implements UserDAO {
 				String dbPassword = rs.getString("Password");
 
 				if (username.equals(dbUserName) && password.equals(dbPassword)) {
-					System.out.println("Authentication passed. Sending to Dashboard...");
+					System.out.println("Login success! Sending to Dashboard...");
 					url = "/dashboard.jsp";
 					break;
 				} else {
-					System.out.println("Authentication failed");
+					System.out.println("Authentication failed.");
 					url = "/loginerror.html";
 				}
 			}

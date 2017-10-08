@@ -13,6 +13,9 @@ public class Product implements Serializable {
 	private double price;
 	private String unit;
 	private String photoPath;
+	//This instance variable is added to be able to set a Vendor object into the Product object
+	//also added getters and setters.
+	private Vendor vendor;
 
 	// the constructors
 	public Product() {
@@ -86,6 +89,14 @@ public class Product implements Serializable {
 		this.photoPath = photoPath;
 	}
 
-	// custom methods
+	public Vendor getVendor() {
+		return vendor;
+	}
 
+	public void setVendor(Vendor vendor) {
+		this.vendor = vendor;
+	}
+
+	// custom methods
+	
 }

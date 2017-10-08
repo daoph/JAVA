@@ -20,6 +20,7 @@ public class ConnectionManager{
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 		String dbUrl = "jdbc:mysql://localhost:3306/prs";
 		String username = "root";
 		String password = "sesame";

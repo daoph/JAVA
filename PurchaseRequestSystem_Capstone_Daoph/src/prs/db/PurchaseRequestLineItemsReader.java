@@ -7,7 +7,9 @@ import prs.business.PurchaseRequestLineItem;
 
 public interface PurchaseRequestLineItemsReader {
 
-	ArrayList<PurchaseRequestLineItem> getLineItems();
+	ArrayList<PurchaseRequestLineItem> getPurchaseRequestLineItems();
+	
+	ArrayList<PurchaseRequestLineItem> getPurchaseRequestLineItems(String s);
 	
 }
 

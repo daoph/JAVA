@@ -1,4 +1,13 @@
-
+#background {
+  width:100%;
+  height:800px;
+  background: url(../media/prsLogo.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin:0% 0px 0px 0px
+}
 
 body {
 	font: normal normal normal 18pt/24pt Tahoma, Arial, sans-serif;
@@ -6,8 +15,9 @@ body {
 }
 
 nav {
+	font: normal normal normal 18pt/24pt Tahoma, Arial, sans-serif;
 	width: 100%;
-	background-color: #454545;
+	background-color: #5f5f5f;
 	padding: 12px 0px;
 	margin: 0px 0px 20px 0px
 }
@@ -23,18 +33,29 @@ li {
 }
 
 
+
 nav ul li a {	
 	color: white;
 	text-decoration: none;
-	padding: 10px;
+	padding: 24px;
+}
+
+nav ul li a:hover {	
+	color: white;
+	text-decoration: none;
+	padding: 24px;
 }
 
 a:hover {
-	background-color:#666666;
+	background-color:#454545;
 }
 
-table tr td {padding: 10px;}
+tr td a:hover{
+background-color:transparent;
+text-decoration: none;
+}
 
+ 
 #bioName {width: 50%; text-align: center}
 
 #aboutPic {float: left; margin: 0px 20px 10px 20px}
@@ -45,27 +66,68 @@ table tr td {padding: 10px;}
 
 #editDetailText {text-align: center; font-size: 1.5em; font-weight: bold}
 
-#userDetailText {text-align: center; font-size: 1.5em; font-weight: bold}
-
-#userTable {text-align: left; margin: 0px 100px; padding: 0px 25%;}
-
-#userTable content td {padding: 5px;}
-
-#listTable tr th {padding: 0px 3px 0px 5px; text-align: left; 
-					font-size: .9em;  border-spacing: 0; border: 1px solid black;}
-
-#listTable tr td {padding: 0px 5px 5px 5px; text-align: left; 
-					border-spacing: 0; border: 1px solid black; }
-
-#editSubmit {width: 100%; text-align: center;}
 
 
-#editRow { text-align: center }
 
-#addRow { text-align: center }
 
-#editSubmitRow { text-align: center }
 
-a {text-decoration: none; font-weight: bold;}
-button a link {color: black}
-button a: visited {color: black}
+#footer{     
+   width:100%;
+   height:60px;
+   position:relative;
+   bottom:0;       
+   
+   }
+   
+   
+   
+.dropbtn {
+    background-color: #5f5f5f;
+    color: white;
+    font: tahoma;
+    font-size: 14pt;
+    border: none;
+    cursor: pointer;
+	padding: 0;
+	margin: 0 20px 0 0;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    font:tahoma;
+    font-size: 14pt;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 0 0 0 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: white;
+	text-decoration: none;
+	color: red;
+	}
+
+	
+
+.dropdown:hover .dropdown-content {
+    display: block;
+     background-color: white;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #5f5f5f;
+}
+
+
+   

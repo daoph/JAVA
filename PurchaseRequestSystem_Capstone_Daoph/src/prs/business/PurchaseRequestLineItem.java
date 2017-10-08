@@ -10,6 +10,7 @@ public class PurchaseRequestLineItem implements Serializable {
 	private int purchaseRequestID;
 	private int productID;
 	private int quantity;
+	private Product product;
 
 	// the constructors
 	public PurchaseRequestLineItem() {
@@ -53,6 +54,14 @@ public class PurchaseRequestLineItem implements Serializable {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
 	// custom methods

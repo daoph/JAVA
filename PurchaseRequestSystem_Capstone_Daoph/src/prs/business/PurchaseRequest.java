@@ -13,16 +13,17 @@ public class PurchaseRequest implements Serializable {
 	private String justification;
 	private Date dateNeeded;
 	private String deliveryMode;
-	private int status;
+	private String status;
 	private double total;
 	private Date submittedDate;
+	String reasonForR;
 
 	// the constructors
 	public PurchaseRequest() {
 	}
 
 	public PurchaseRequest(int id, int userID, String description, String justification, Date dateNeeded,
-			String deliveryMode, int status, double total, Date submittedDate) {
+			String deliveryMode, String status, double total, Date submittedDate) {
 		this.id = id;
 		this.userID = userID;
 		this.description = description;
@@ -32,6 +33,20 @@ public class PurchaseRequest implements Serializable {
 		this.status = status;
 		this.total = total;
 		this.submittedDate = submittedDate;
+	}
+	
+	public PurchaseRequest(int id, int userID, String description, String justification, Date dateNeeded,
+			String deliveryMode, String status, double total, Date submittedDate, String reasonForR) {
+		this.id = id;
+		this.userID = userID;
+		this.description = description;
+		this.justification = justification;
+		this.dateNeeded = dateNeeded;
+		this.deliveryMode = deliveryMode;
+		this.status = status;
+		this.total = total;
+		this.submittedDate = submittedDate;
+		this.reasonForR = reasonForR;
 	}
 
 	// the set and get methods
@@ -83,11 +98,12 @@ public class PurchaseRequest implements Serializable {
 		this.deliveryMode = deliveryMode;
 	}
 
-	public int getStatus() {
+
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -105,6 +121,14 @@ public class PurchaseRequest implements Serializable {
 
 	public void setSubmittedDate(Date submittedDate) {
 		this.submittedDate = submittedDate;
+	}
+
+	public String getReasonForR() {
+		return reasonForR;
+	}
+
+	public void setReasonForR(String reasonForR) {
+		this.reasonForR = reasonForR;
 	}
 	
 	// custom methods

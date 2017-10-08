@@ -27,10 +27,4 @@ public class PRSFactory {
 		return purchaseRequestLineItemsDao;
 	}
 	
-	public static StatusDAO getStatusDAO() {
-		StatusDAO statusDao = new StatusDB();
-		return statusDao;
-	}
-	
-
 }
