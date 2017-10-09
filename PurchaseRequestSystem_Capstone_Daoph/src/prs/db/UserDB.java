@@ -74,11 +74,13 @@ public class UserDB implements UserDAO {
 	@Override
 	public User getUserObject(String username) {
 
-		String sql = "SELECT * FROM prs.User Where UserName = '" + username + "';";
+		String sql = "SELECT * FROM prs.User Where UserName = ?";
 
 		try (Connection connection = ConnectionManager.getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery()) {
+				PreparedStatement ps = connection.prepareStatement(sql)) {
+
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 

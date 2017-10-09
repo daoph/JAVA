@@ -140,13 +140,26 @@
 						class="form-control input-sm" name="reason" required>
 				</div>
 				<div class="form-group">
-					<label for="usr">Date Needed By</label> <input type="text"
-						class="form-control input-sm" value="DD-MM-YYYY" name="dateNeeded"
+					<label for="usr">Date Needed By</label> <input type="date"
+						class="form-control input-sm" name="dateNeeded"
 						required>
 				</div>
+				
 				<div class="form-group">
-					<label for="usr">Delivery Mode</label> <input type="text"
-						class="form-control input-sm" name="deliveryMode" required>
+					
+					<label for="usr">Delivery Mode</label> 
+					<input list = "shipping" class="form-control input-sm" name="deliveryMode">
+					
+					
+						<datalist id="shipping">
+						<option value="Economy">
+						<option value="Ground">
+						<option value="2nd Day">
+						<option value="Overnight">
+						<option value="Local Pickup">
+						</datalist>
+
+					
 				</div>
 				<div id="clearSubmit">
 					<button type="reset" class="btn btn-default">Clear</button>
@@ -156,5 +169,7 @@
 		</div>
 
 	</form>
+	
+	
 </body>
 </html>

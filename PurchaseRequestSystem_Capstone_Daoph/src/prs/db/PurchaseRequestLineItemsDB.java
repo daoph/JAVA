@@ -41,12 +41,14 @@ public class PurchaseRequestLineItemsDB implements PurchaseRequestLineItemsDAO {
 	@Override
 	public ArrayList<PurchaseRequestLineItem> getPurchaseRequestLineItems(String s) {
 		
-		String sql = "SELECT * FROM prs.PurchaseRequestLineItems WHERE PurchaseRequestID = " + s ; 
+		String sql = "SELECT * FROM prs.PurchaseRequestLineItems WHERE PurchaseRequestID = ?"; 
 		ArrayList<PurchaseRequestLineItem> prli = new ArrayList<>();
 
 		try (Connection connection = ConnectionManager.getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery()) {
+				PreparedStatement ps = connection.prepareStatement(sql)) {
+
+			ps.setString(1, s);
+			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				int id = rs.getInt("ID");
@@ -80,8 +82,12 @@ public class PurchaseRequestLineItemsDB implements PurchaseRequestLineItemsDAO {
 		try (Connection connection = ConnectionManager.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);) {
 
-			ps.executeUpdate(sql);
-			System.out.println("Written to PRLI DB");
+			ps.setInt(1, id);
+			ps.setInt(2, productID);
+			ps.setInt(3, quantity);
+			
+			int rowCount = ps.executeUpdate();
+			System.out.println(rowCount + " row(s) updated.");
 		}
 
 		catch (SQLException e) {
