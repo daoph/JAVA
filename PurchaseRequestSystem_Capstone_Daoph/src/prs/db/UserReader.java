@@ -8,7 +8,7 @@ public interface UserReader {
 	
 	public ArrayList<User> getAllUsers();
 	
-	public String loginValidator(String username, String password);
+	public boolean loginValidator(String username, String password);
 	
 	public User getUserObject(String username);
 

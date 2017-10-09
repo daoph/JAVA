@@ -63,7 +63,7 @@ public class PurchaseRequestLineItem implements Serializable {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	
+
 	// custom methods
 
 }

@@ -44,6 +44,12 @@ public class VendorDB implements VendorDAO {
 		}	
 	}
 
+	@Override
+	public void addVendor() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

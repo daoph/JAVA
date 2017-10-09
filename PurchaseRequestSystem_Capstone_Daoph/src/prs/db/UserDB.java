@@ -36,18 +36,16 @@ public class UserDB implements UserDAO {
 				user.add(s);
 			}
 			return user;
-		
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	
-	
 	@Override
-	public String loginValidator(String username, String password) {
-		String url = "";
+	public boolean loginValidator(String username, String password) {
+		boolean isValid = false;
 		String sql = "SELECT * FROM prs.User";
 
 		try (Connection connection = ConnectionManager.getConnection();
@@ -59,18 +57,18 @@ public class UserDB implements UserDAO {
 				String dbPassword = rs.getString("Password");
 
 				if (username.equals(dbUserName) && password.equals(dbPassword)) {
-					System.out.println("Login success! Sending to Dashboard...");
-					url = "/dashboard.jsp";
+					System.out.println("User/password verified...");
+					isValid = true;
 					break;
 				} else {
-					System.out.println("Authentication failed.");
-					url = "/loginerror.html";
+					System.out.println("User/password does not match...");
+					isValid = false;
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return url;
+		return isValid;
 	}
 
 	@Override
@@ -83,7 +81,7 @@ public class UserDB implements UserDAO {
 				ResultSet rs = ps.executeQuery()) {
 
 			while (rs.next()) {
-	
+
 				int id = rs.getInt("ID");
 				String userName = rs.getString("UserName");
 				String firstName = rs.getString("FirstName");
@@ -92,9 +90,9 @@ public class UserDB implements UserDAO {
 				String email = rs.getString("Email");
 				boolean isReviewer = rs.getBoolean("IsReviewer");
 				boolean isAdmin = rs.getBoolean("IsAdmin");
-				
+
 				User user = new User();
-		
+
 				user.setId(id);
 				user.setUsername(userName);
 				user.setFirstName(firstName);
@@ -103,12 +101,17 @@ public class UserDB implements UserDAO {
 				user.setEmail(email);
 				user.setReviewer(isReviewer);
 				user.setAdmin(isAdmin);
-				
+
 				return user;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
-	}	
+	}
+
+	@Override
+	public void addUser() {
+		// TODO Auto-generated method stub
+	}
 }

@@ -34,7 +34,7 @@ public class PurchaseRequest implements Serializable {
 		this.total = total;
 		this.submittedDate = submittedDate;
 	}
-	
+
 	public PurchaseRequest(int id, int userID, String description, String justification, Date dateNeeded,
 			String deliveryMode, String status, double total, Date submittedDate, String reasonForR) {
 		this.id = id;
@@ -98,7 +98,6 @@ public class PurchaseRequest implements Serializable {
 		this.deliveryMode = deliveryMode;
 	}
 
-
 	public String getStatus() {
 		return status;
 	}
@@ -130,7 +129,7 @@ public class PurchaseRequest implements Serializable {
 	public void setReasonForR(String reasonForR) {
 		this.reasonForR = reasonForR;
 	}
-	
+
 	// custom methods
 
 }

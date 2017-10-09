@@ -62,6 +62,12 @@ public class ProductDB implements ProductDAO {
 		return sum;
 	}
 
+	@Override
+	public void addProduct() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 }
