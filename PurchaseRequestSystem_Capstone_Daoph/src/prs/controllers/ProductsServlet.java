@@ -48,11 +48,11 @@ public class ProductsServlet extends HttpServlet {
 			// set product list to products object
 			products = dao.listAllProducts();
 
-			// console logic to print out products. Completely independent and non-critical
-			// to function.
+			// console logic to print out products. Completely independent and non-critical.
+			System.out.println("Creating Products Table...");
 			String s = PrsConsoleApp.populateList(products);
 			System.out.println(s);
-			System.out.println("ProductsServlet running...");
+
 
 			// get the session
 			HttpSession session = request.getSession();
