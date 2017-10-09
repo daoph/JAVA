@@ -30,6 +30,9 @@ public class PrsLoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//Console message
+				System.out.println("PrsLoginServlet running...");
 
 		// get action parameters from index.html form
 		ServletContext sc = getServletContext();

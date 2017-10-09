@@ -28,6 +28,9 @@ public class ManagerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//Console message
+				System.out.println("ManagerServlet running...");
 
 		String url = "";
 

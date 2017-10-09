@@ -17,8 +17,7 @@ public class Vendor implements Serializable {
 	private String email;
 	private boolean preapproved;
 
-	// the constructors
-	
+	// the constructors	
 	public Vendor() {
 	}
 

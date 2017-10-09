@@ -32,13 +32,20 @@ public class CartServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//Console message
+		System.out.println("CartServlet running...");
+		
+		//call DAOs
 		PurchaseRequestLineItemsDAO prliDAO = PRSFactory.getPurchaseRequestLineItemsDAO();
 		ProductDAO pDAO = PRSFactory.getProductDAO();
 		PurchaseRequestDAO prDAO = PRSFactory.getPurchaseRequestDAO();
+		
+		//create and set products ArrayList
 		ArrayList<Product> products = new ArrayList<Product>();
 		products = pDAO.listAllProducts();
 
-		System.out.println("CartServlet running...");
+		
 		String url = "";
 		double aggregate = 0;
 		ServletContext sc = getServletContext();

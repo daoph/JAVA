@@ -28,6 +28,9 @@ public class ProductsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//Console message
+				System.out.println("ProductsServlet running...");
 
 		String url = "";
 		ServletContext sc = getServletContext();

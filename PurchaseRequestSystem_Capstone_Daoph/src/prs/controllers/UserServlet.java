@@ -26,6 +26,10 @@ public class UserServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//Console message
+				System.out.println("UserServlet running...");
+		
 		String url = "";
 		ServletContext sc = getServletContext();
 		String action = request.getParameter("action");

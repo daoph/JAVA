@@ -17,7 +17,6 @@ public class User implements Serializable {
 	private boolean isAdmin;
 
 	// the constructors
-
 	public User() {
 	}
 
