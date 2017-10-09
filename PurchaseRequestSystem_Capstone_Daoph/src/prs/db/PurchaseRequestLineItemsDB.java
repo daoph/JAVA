@@ -77,7 +77,7 @@ public class PurchaseRequestLineItemsDB implements PurchaseRequestLineItemsDAO {
 		
 		String sql = "INSERT INTO prs.PurchaseRequestLineItems"
 				+ "(PurchaseRequestID, ProductID, Quantity) "
-				+ "VALUES ('"+id+"','"+productID+"', '"+quantity+"');" ;
+				+ "VALUES (?,?,?);" ;
 		
 		try (Connection connection = ConnectionManager.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);) {
