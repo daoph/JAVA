@@ -31,11 +31,11 @@ public class PrsLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// get action parameters
+		// get action parameters from index.html form
 		ServletContext sc = getServletContext();
 		String action = request.getParameter("action");
 
-		// LOGIN
+		// LOGIN ********************************************************************************************
 		if (action.equals("login")) {
 			String url = "";
 			boolean isValid = false;
@@ -48,7 +48,7 @@ public class PrsLoginServlet extends HttpServlet {
 			UserDAO dao = PRSFactory.getUserDAO();
 			VendorDAO vdao = PRSFactory.getVendorDAO();
 
-			// set url with loginValidator method.
+			// set set boolean isValid with loginValidator method.
 			isValid = dao.loginValidator(username, password);
 
 			if (isValid == true) {
@@ -68,7 +68,8 @@ public class PrsLoginServlet extends HttpServlet {
 
 			if (url.equalsIgnoreCase("/dashboard.jsp")) {
 
-				// get session
+				
+				// checking if session exists
 				HttpSession session = request.getSession(false);
 				if (session == null) {
 					System.out.println("No Session Found");
@@ -76,6 +77,7 @@ public class PrsLoginServlet extends HttpServlet {
 					System.out.println("Current Session Found: " + session.getId());
 				}
 
+				//get session ID or create new
 				session = request.getSession(true);
 
 				System.out.println("Session ID: " + session.getId());
@@ -83,21 +85,26 @@ public class PrsLoginServlet extends HttpServlet {
 				// create and set vendors hash map with method below...
 				Map<Integer, Vendor> vendors = setVendorHashMap();
 				Map<Integer, Product> productHash = setProductHashMap();
+				
+				//created for vendors.jsp. NEED to just use the vendors Hashmap instead for efficiency improvements.
 				ArrayList<Vendor> vendor2 = vdao.listAllVendors();
 
 				// set session attributes
-				session.setAttribute("vendor2", vendor2);
 				session.setAttribute("user", user);
 				session.setAttribute("vendors", vendors);
 				session.setAttribute("productHash", productHash);
+				session.setAttribute("vendor2", vendor2);
 
 			} else {
 				System.out.println("No Session Created");
 			}
+			
 			// forward user to appropriate page.
 			getServletContext().getRequestDispatcher(url).forward(request, response);
+			
 
-			// LOGOUT********************************************************************************************
+			// LOGOUT ********************************************************************************************
+			
 		} else if (action.equals("logout")) {
 
 			System.out.println("Logging off...");
@@ -131,7 +138,8 @@ public class PrsLoginServlet extends HttpServlet {
 		ArrayList<Vendor> vendors = vDao.listAllVendors();
 		// create an empty hash map
 		Map<Integer, Vendor> vendorMap = new HashMap<>();
-		// loop to add key and values
+		
+		// create loop to add values
 		for (Vendor v : vendors) {
 			vendorMap.put(v.getId(), v);
 		}
@@ -146,8 +154,7 @@ public class PrsLoginServlet extends HttpServlet {
 		// create an empty hash map
 		Map<Integer, Product> productMap = new HashMap<>();
 
-		// create loop to add values.
-
+		// create loop to add values
 		for (Product p : productL) {
 			productMap.put(p.getId(), p);
 		}
